@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>## Frontend testing</section>
+				<section data-markdown>
+					## Pick one
+
+					- Fast but not Comprehensive
+					- Comprehensive but slow
+				</section>
+				<section data-markdown>
+					## Unit testing
+
+					- Great to test and document business logic
+					- Very fast
+					- Detached from the user journey
+					- Not good for documenting platform behaviour
+				</section>
+				<section data-markdown>
+					## Cypress
+
+					- Great for documenting user behaviour
+					- All the browser API available (no need to mock browser functionality)
+					- Not brittle compared to selenium, puppeteer (in build retry)
+
+					- Slow (spin up only can take 1+ minutes)
+				</section>
+				<section data-markdown>
+					## React testing library
+
+					- Can render to JSDOM, an emulation of a subset of browser dom
+					- Very fast (even rendering a whole page is < 100ms)
+					- Can test both small components or the whole page
+					- Can document user and platform behaviour
+					- Has cypress bindings
+					- No need to run the app to run the tests
+
+					- Needs mocking for standard browser functionality (ie: i18n)
+				</section>
+				<section data-markdown>
+					## Testing burger
+					- A few of e2e tests
+					- Lots of integration tests
+					- A few unit tests for key business logic
+
+					![alt text](test-pyramid.png)
+				</section>
+				<section  data-markdown>
+					## Why more integration tests?
+
+					- Not much more expensive than unit tests
+					- Less coupling (fails mostly if functionality changes)
+					- Documentation (mimic user behaviour)
+					- Quick even if comprehensive
+				</section>
+				<section data-markdown>
+					## When to run
+					- Unit tests pre-push, pipeline
+					- Integration tests pre-push, pipeline
+					- E2E testing post-deploy
+
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
