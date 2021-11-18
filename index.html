@@ -46,7 +46,7 @@
 					- Can render to JSDOM, an emulation of a subset of browser dom
 					- Very fast (even rendering a whole page is < 100ms)
 					- Can test both small components or the whole page
-					- Can document user and platform behaviour
+					- Can document user and platform behaviour (foster collaboration)
 					- Has cypress bindings
 					- No need to run the app to run the tests
 
@@ -54,6 +54,7 @@
 				</section>
 				<section data-markdown>
 					## Testing burger
+
 					- A few of e2e tests
 					- Lots of integration tests
 					- A few unit tests for key business logic
@@ -67,14 +68,34 @@
 					- Less coupling (fails mostly if functionality changes)
 					- Documentation (mimic user behaviour)
 					- Quick even if comprehensive
+					- Many advantages of e2e testing without the cost
+				</section>
+				<section  data-markdown>
+					## Could we remove e2e test altogether?
+					- "Smoke test" to check that the platform is running
+					- Testing integration with our graphql (not just a mock)
+					- Tests idp-provided cookies
+					- Generate har files for load testing
 				</section>
 				<section data-markdown>
-					## When to run
+					## How this translates for new features
+					- E2E for golden path (ie: a few tests per epic)
+					- Integration tests coverage for most of the code we ship
+					- Unit tests as necesasry
+				</section>
+				<section data-markdown>
+					## What about existing code
+					- Clean up E2E tests and keep the valuable ones
+					- When working on existing code, expecially for big refactorings, add tests as see fit
+				</section>
+				<section data-markdown>
+					## Next steps
 					- Unit tests pre-push, pipeline
 					- Integration tests pre-push, pipeline
 					- E2E testing post-deploy
-
+					- Code coverage report
 				</section>
+
 			</div>
 		</div>
 
